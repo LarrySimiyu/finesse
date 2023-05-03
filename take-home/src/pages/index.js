@@ -2,15 +2,28 @@ import { useState } from "react";
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { AlignJustify, Search } from "react-feather";
+import {
+  AlignJustify,
+  Search,
+  PlusCircle,
+  Rewind,
+  MessageCircle,
+  CreditCard,
+  ArrowRight,
+  ChevronUp,
+} from "react-feather";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
+  const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
+  const toggleShipping = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleSizeGuide = () => {
+    setSizeGuideOpen(!sizeGuideOpen);
   };
   const sizes = ["xs", "sm", "md", "lg", "xl", "1x", "2x", "3x"];
 
@@ -92,10 +105,10 @@ export default function Home() {
           <div className="text-[14px] mb-2">95% Polyester 5% Spandex</div>
         </div>
 
-        <div className="border rounded-md overflow-hidden">
+        <div className="border mb-3  border-black rounded-md overflow-hidden">
           <div
-            className="px-4 py-3 flex justify-between items-center cursor-pointer"
-            onClick={toggleAccordion}
+            className="px-4 py-3 flex justify-between items-center cursor-pointer h-8"
+            onClick={toggleShipping}
           >
             <h3 className="text-sm text-gray-800">Shipping and Returns</h3>
             <svg
@@ -111,10 +124,237 @@ export default function Home() {
             </svg>
           </div>
           {isOpen && (
-            <div className="bg-gray-100 px-4 py-3">
-              <p className="text-gray-800">WOW THIS IS COOL STUFF</p>
+            <div className="border-t border-black  px-4 py-3">
+              <div className="mb-5">
+                <p className="text-gray-800 text-[14px]">
+                  STANDARD SHIPPING <br />
+                  Free for orders over $75. <br />
+                  Within the US, the estimated transit period is 6-11 business
+                  days, depending on the delivery address.
+                  <br />
+                  Within the AU & UK, the estimated transit period is 5-11
+                  business days, depending on the delivery address. <br />
+                  Within DE, the estimated transit period is 10-15 business
+                  days, depending on the delivery address.
+                  <br />
+                </p>
+              </div>
+              <div className="mb-5">
+                <p className="text-gray-800 text-[14px]">
+                  EXPRESS SHIPPING <br />
+                  Within the US, the estimated transit period is 2-5 business
+                  days, depending on the delivery address. <br />
+                  Within the UK, the estimated transit period is 2-5 business
+                  days, depending on the delivery address
+                  <br />
+                  Express shipping is not yet available to customers in AU and
+                  DE.
+                  <br />
+                </p>
+              </div>
+
+              <div>
+                <p className="text-gray-800 text-[14px]">
+                  FREE RETURNS & EXCHANGES <br />
+                  You can return or exchange your items from domestic orders
+                  easily with free shipping by clicking<span>&nbsp;</span>
+                  <a
+                    className="text-gray-500"
+                    href="https://finesse.loopreturns.com/#/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    here
+                  </a>
+                  <span>&nbsp;</span>
+                  and following the returns process.
+                  <br />
+                  For free international returns shipping, just shoot us an
+                  email at<span>&nbsp;</span>
+                  <a
+                    className="text-gray-500"
+                    href="mailto:rewind@finesse.us"
+                    target="_blank"
+                    title="rewind@finesse.us"
+                    rel="noopener noreferrer"
+                  >
+                    rewind@finesse.us
+                  </a>
+                  <span>&nbsp;</span>
+                  to get it started!
+                </p>
+              </div>
             </div>
           )}
+        </div>
+
+        <div className="border  border-black rounded-md overflow-hidden">
+          <div
+            className="px-4 py-3 flex justify-between items-center cursor-pointer h-8"
+            onClick={toggleSizeGuide}
+          >
+            <h3 className="text-sm text-gray-800">Size Guide</h3>
+            <svg
+              className={`w-6 h-6 transition-transform transform ${
+                sizeGuideOpen ? "rotate-180" : ""
+              }`}
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M16.59 8.59L12 13.17L7.41 8.59L6 10L12 16L18 10L16.59 8.59Z"
+              />
+            </svg>
+          </div>
+          {sizeGuideOpen && (
+            <div className="border-t border-black">
+              <table className="w-full">
+                <thead>
+                  <tr>
+                    <th>Size</th>
+                    <th>US</th>
+                    <th>Bust</th>
+                    <th>Waist</th>
+                    <th>Hip</th>
+                    <th>Inseam</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>XS</td>
+                    <td>0-2</td>
+                    <td>33.5"</td>
+                    <td>25.5"</td>
+                    <td>36.5"</td>
+                    <td>32"</td>
+                  </tr>
+                  <tr>
+                    <td>S</td>
+                    <td>4-6</td>
+                    <td>35"</td>
+                    <td>27"</td>
+                    <td>38"</td>
+                    <td>32"</td>
+                  </tr>
+                  <tr>
+                    <td>M</td>
+                    <td>8-10</td>
+                    <td>37"</td>
+                    <td>29"</td>
+                    <td>40"</td>
+                    <td>32"</td>
+                  </tr>
+                  <tr>
+                    <td>L</td>
+                    <td>12-14</td>
+                    <td>39"</td>
+                    <td>31"</td>
+                    <td>42"</td>
+                    <td>32"</td>
+                  </tr>
+                  <tr>
+                    <td>XL</td>
+                    <td>14-16</td>
+                    <td>41"</td>
+                    <td>33"</td>
+                    <td>44"</td>
+                    <td>32"</td>
+                  </tr>
+                  <tr>
+                    <td>1X</td>
+                    <td>16-18</td>
+                    <td>45"</td>
+                    <td>40"</td>
+                    <td>50"</td>
+                    <td>33.5"</td>
+                  </tr>
+                  <tr>
+                    <td>2X</td>
+                    <td>18-20</td>
+                    <td>47"</td>
+                    <td>42"</td>
+                    <td>52"</td>
+                    <td>33.5"</td>
+                  </tr>
+                  <tr>
+                    <td>3X</td>
+                    <td>20-22</td>
+                    <td>49"</td>
+                    <td>44"</td>
+                    <td>54"</td>
+                    <td>33.5"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+
+        <div className="bg-[#C3B1E1] h-[200px] rounded-md my-10">
+          {/* <div className="flex items-center justify-center border">
+            <PlusCircle size={40} color="gray" />
+            <p className="ml-2 text-[12px] font-bold text-gray-500">
+              SIZE INCLUSIVE UP TO 3X
+            </p>
+          </div>
+          <div className="flex items-center justify-start">
+            <Rewind size={40} color="gray" />
+            <p>EASY RETUNRS & EXCHANGES</p>
+          </div>
+          <div className="flex items-center justify-start">
+            <MessageCircle size={40} color="gray" />
+            <p>24/7 CUSTOMER SERVICE</p>
+          </div>
+          <div className="flex items-center justify-start">
+            <CreditCard size={40} color="gray" />
+            <p>FLEXIBLE PAYMENT OPTIONS</p>
+          </div> */}
+        </div>
+        <div className="flex items-center justify-between">
+          <h1 className="font-bold text-[22px]">You May Like...</h1>
+          <a href="https://finesse.us/collections/all?sort_by=best-selling">
+            <ArrowRight size={22} />
+          </a>
+        </div>
+        {/* horizantal scroll */}
+        <div className="w-full h-[300px] border mt-5"></div>
+        <div
+          className="w-full h-[75px] border-t border-b flex justify-center items-center mt-5 font-semibold text-[14px]"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          Back To The Top <ChevronUp size={20} />
+        </div>
+        <div className="flex my-10">
+          <div className=" w-1/3 text-gray-500">
+            <div className="font-bold text-[14px] text-black">Shop By</div>
+            <p className="text-[10px] mb-1">Tops</p>
+            <p className="text-[10px] mb-1">Bottoms</p>
+            <p className="text-[10px] mb-1">Outerwear</p>
+            <p className="text-[10px] mb-1">Sets</p>
+            <p className="text-[10px] mb-1">Accessories</p>
+            <p className="text-[10px] mb-1">Dresses</p>
+          </div>
+          <div className=" w-1/3 text-gray-500">
+            <div className="font-bold text-[14px] text-black">Follow Us</div>
+            <p className="text-[10px] mb-1">Instagram</p>
+            <p className="text-[10px] mb-1">Facebook</p>
+            <p className="text-[10px] mb-1">Twitter</p>
+            <p className="text-[10px] mb-1">TikTok</p>
+            <p className="text-[10px] mb-1">Snapchat</p>
+            <p className="text-[10px] mb-1">Youtube</p>
+          </div>
+
+          <div className=" w-1/3 text-gray-500">
+            <div className="font-bold text-[14px] text-black">Follow Us</div>
+            <p className="text-[10px] mb-1">reqind@finesse.us</p>
+            <p className="text-[10px] mb-1">Refunds & Returns</p>
+            <p className="text-[10px] mb-1">Shipping & Returns</p>
+            <p className="text-[10px] mb-1">Terms & Conditions</p>
+            <p className="text-[10px] mb-1">Cali Privacy Rights</p>
+          </div>
+        </div>
+        <div className="text-gray-200 border-t text-[12px] flex justify-center pt-5 items-center">
+          Copyright Finesse Inc. 2023, All Rights Reserved.
         </div>
       </div>
     </main>
