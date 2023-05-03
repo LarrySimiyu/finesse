@@ -88,6 +88,7 @@ export default function Home() {
   );
 
   const sizes = ["xs", "sm", "md", "lg", "xl", "1x", "2x", "3x"];
+
   const menuItems = [
     "Home",
     "Products",
@@ -96,6 +97,25 @@ export default function Home() {
     "About",
     "Track Your Order",
     "Exchange & Refunds",
+  ];
+
+  const clothingSuggestions = [
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 34,
+    },
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 89,
+    },
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 66,
+    },
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 78,
+    },
   ];
 
   const increaseQuantity = (itemName, itemSize) => {
@@ -186,7 +206,7 @@ export default function Home() {
             {`Cart${cartItems.length > 0 ? `(${totalQuantity})` : ""}`}
           </div>
           {cartVisible && (
-            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 right-0">
+            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 right-0 overflow-auto">
               <div className="border-b h-16 pl-5 flex  items-center ">
                 <ArrowLeft
                   size={24}
@@ -214,11 +234,19 @@ export default function Home() {
               {cartItems.map((item) => {
                 return (
                   <div
-                    className="h-[150px] flex justify-between border-b mt-10"
+                    className="h-[150px] flex justify-between border-b mt-10 pr-3"
                     key={item.size}
                   >
-                    <div className="w-[20%]  "> - </div>
-                    <div className=" w-[70%] pr-2">
+                    <div className="w-[25%] h-[70%] flex justify-center items-center">
+                      <Image
+                        src="/front.png"
+                        alt="Buy with icon"
+                        width={80}
+                        height={80}
+                        className="ml-2 border rounded-md"
+                      />{" "}
+                    </div>
+                    <div className=" w-[70%] ">
                       <div className=" flex">
                         <div>{item.name}</div>
                         <div>Size: {item.size.toUpperCase()}</div>
@@ -282,7 +310,28 @@ export default function Home() {
                 </a>
               </div>
               {/* horizantal scroll */}
-              <div className="w-full h-[300px] border mt-5"></div>
+              <div className="flex overflow-x-auto w-full  h-[400px]  mb-5 pt-8">
+                {clothingSuggestions.map((item) => {
+                  return (
+                    <div key={item.cost} className=" min-w-[160px]">
+                      {" "}
+                      <Image
+                        src="/front.png"
+                        alt="Buy with icon"
+                        width={150}
+                        height={150}
+                        className="ml-2 border rounded-md"
+                      />{" "}
+                      <div className=" flex justify-start mt-2 pl-2 ">
+                        ${item.cost}
+                      </div>
+                      <div className=" flex justify-end mt-2  pl-2 font-semibold">
+                        {item.name}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>
