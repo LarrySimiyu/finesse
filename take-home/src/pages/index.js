@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
@@ -23,6 +23,20 @@ export default function Home() {
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
+  const [selectedSize, setSelectedSize] = useState("sm");
+  const [cartItems, setCartItems] = useState([]);
+  const [item, setItem] = useState({
+    name: "Sadie Tie Dye Print Dress",
+    size: "sm",
+    cost: 37,
+    quantity: 1,
+  });
+  // const [item, setItem] = useState({
+  //   size: selectedSize,
+  //   cost: 37,
+  //   quantity: quantity,
+  // });
+  const [quantity, setQuantity] = useState(1);
 
   const toggleShipping = () => {
     setIsOpen(!isOpen);
@@ -31,6 +45,47 @@ export default function Home() {
   const toggleSizeGuide = () => {
     setSizeGuideOpen(!sizeGuideOpen);
   };
+
+  const handleAddToCart = () => {
+    const itemExists = cartItems.some(
+      (item) => item.name === item.name && item.size === selectedSize
+    );
+
+    if (itemExists) {
+      const updatedCartItems = cartItems.map((item) => {
+        if (item.name === item.name && item.size === selectedSize) {
+          return {
+            ...item,
+            quantity: item.quantity + quantity,
+            itemTotal: item.cost * quantity,
+          };
+        }
+        return item;
+      });
+      setCartItems(updatedCartItems);
+    } else {
+      setCartItems([
+        ...cartItems,
+        {
+          name: item.name,
+          size: selectedSize,
+          cost: 37,
+          quantity: quantity,
+          itemTotal: item.cost * quantity,
+        },
+      ]);
+    }
+    setCartVisible(!cartVisible);
+  };
+
+  const totalCost = cartItems.reduce(
+    (accumulator, currentItem) => accumulator + currentItem.itemTotal,
+    0
+  );
+  const totalQuantity = cartItems.reduce(
+    (accumulator, currentItem) => accumulator + currentItem.quantity,
+    0
+  );
 
   const sizes = ["xs", "sm", "md", "lg", "xl", "1x", "2x", "3x"];
   const menuItems = [
@@ -42,6 +97,41 @@ export default function Home() {
     "Track Your Order",
     "Exchange & Refunds",
   ];
+
+  const increaseQuantity = (itemName, itemSize) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.name === itemName && item.size === itemSize) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+          itemTotal: item.cost * (item.quantity + 1),
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  const reduceQuantity = (itemName, itemSize) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.name === itemName && item.size === itemSize) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+          itemTotal: item.cost * (item.quantity - 1),
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems.filter((item) => item.quantity > 0));
+  };
+
+  const handleDeleteItem = (itemName, itemSize) => {
+    const updatedCartItems = cartItems.filter(
+      (item) => !(item.name === itemName && item.size === itemSize)
+    );
+    setCartItems(updatedCartItems);
+  };
 
   return (
     <main
@@ -90,10 +180,10 @@ export default function Home() {
             </div>
           )}
           <div
-            className="flex justify-center items-center"
+            className="flex justify-center items-center font-semibold"
             onClick={() => setCartVisible(!cartVisible)}
           >
-            Cart
+            {`Cart${cartItems.length > 0 ? `(${totalQuantity})` : ""}`}
           </div>
           {cartVisible && (
             <div className="bg-white w-[90vw] h-[100vh] absolute top-0 left-0">
@@ -107,31 +197,83 @@ export default function Home() {
 
                 <div className="ml-5 text-[18px] font-bold">Shopping Bag</div>
               </div>
-              {/* shopping item containers */}
-              <div className=" h-[150px] flex justify-between border">
-                <div className="w-[20%] border "> - </div>
-                <div className="border w-[70%] pr-2">
-                  <div className="border flex">
-                    <div>Sandy Tie Dye Print Dress</div>
-                    <div>Size: M</div>
-                  </div>
-                  <div className="border flex justify-between mt-5">
-                    <div>$36.00</div>
-                    <div>QTY: 1</div>
-                  </div>
-                  <div className="border flex justify-between mt-1">
-                    <div className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black">
-                      -
-                    </div>
-                    <div className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black mx-2">
-                      +
-                    </div>
-                    <div className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black">
-                      <Trash2 size={20} />
-                    </div>
-                  </div>
-                </div>
+              <div className="w-full h-20  flex justify-center items-center flex-col  text-[14px] px-5  bg-[#C3B1E1] text-white">
+                <div className="font-bold">Free Shipping!</div>
+                <div>Cart Message Here</div>
               </div>
+              {/* shopping item containers */}
+              {cartItems.map((item) => {
+                return (
+                  <div
+                    className="h-[150px] flex justify-between border-b mt-10"
+                    key={item.size}
+                  >
+                    <div className="w-[20%]  "> - </div>
+                    <div className=" w-[70%] pr-2">
+                      <div className=" flex">
+                        <div>{item.name}</div>
+                        <div>Size: {item.size.toUpperCase()}</div>
+                      </div>
+                      <div className=" flex justify-between mt-5">
+                        <div>${item.cost}.00</div>
+                        <div>QTY: {item.quantity}</div>
+                      </div>
+                      <div className=" flex justify-between mt-1">
+                        <div
+                          className={`w-2/5 border flex justify-center items-center h-10 rounded-md border-black ${
+                            item.quantity === 1
+                              ? "bg-gray-200 border-gray-200 text-gray-500"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            item.quantity > 1 &&
+                            reduceQuantity(item.name, item.size)
+                          }
+                        >
+                          -
+                        </div>
+                        <div
+                          className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black mx-2"
+                          onClick={() => increaseQuantity(item.name, item.size)}
+                        >
+                          +
+                        </div>
+                        <div
+                          className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black"
+                          onClick={() => handleDeleteItem(item.name, item.size)}
+                        >
+                          <Trash2 size={20} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              <div className="w-full h-[75px]  flex justify-between items-center  text-[14px] px-5">
+                <div>Total Price </div>
+                <div>${totalCost} USD </div>
+              </div>
+              <div className="w-full h-24  flex justify-center items-center  text-[14px] px-5  bg-black">
+                <button
+                  className="border rounded-2xl w-[90%] h-10 font-bold text-white text-[18px]"
+                  onClick={() => {
+                    console.log("checking out");
+                  }}
+                >
+                  CHECKOUT
+                </button>
+              </div>
+              <div className="flex items-center justify-between border-t mt-8 px-5 pt-5">
+                <div className="font-bold text-[14px]">
+                  Check out these fits...
+                </div>
+                <a href="https://finesse.us/collections/all?sort_by=best-selling">
+                  <ArrowRight size={22} />
+                </a>
+              </div>
+              {/* horizantal scroll */}
+              <div className="w-full h-[300px] border mt-5"></div>
             </div>
           )}
         </div>
@@ -143,18 +285,21 @@ export default function Home() {
 
       <div className=" w-full flex flex-col px-5 py-10">
         {/* name section */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-3">
           <div className="font-bold">Sandie Tie Dye Print Dress</div>
-          <div className="text-gray-400">$500</div>
+          <div>$37</div>
         </div>
         {/* sizing section */}
         <div className="flex flex-col">
-          <div className="text-[12px]">Size</div>
+          <div className="text-[12px] mb-1">Size</div>
           <div className="grid grid-cols-4 grid-rows-2 gap-1">
             {sizes.map((size) => (
               <div
-                className="text-[14px] h-8 border border-black flex justify-center items-center rounded-md"
+                className={`text-[14px] h-8 border border-black flex justify-center items-center rounded-md ${
+                  selectedSize === size ? "bg-black text-white" : ""
+                }`}
                 key={size}
+                onClick={() => setSelectedSize(size)}
               >
                 {size}
               </div>
@@ -162,14 +307,29 @@ export default function Home() {
           </div>
 
           <div className="border flex justify-center items-center mt-4 h-10 border-black rounded-md">
-            <div className="flex justify-center w-1/3 "> - </div>
-            <div className="flex justify-center items-center w-1/3 border-l border-r h-full border-black font-bold">
-              1
+            <div
+              className="flex justify-center w-1/3 "
+              onClick={() =>
+                quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1)
+              }
+            >
+              -
             </div>
-            <div className="flex justify-center w-1/3 "> +</div>
+            <div className="flex justify-center items-center w-1/3 border-l border-r h-full border-black font-bold">
+              {quantity}
+            </div>
+            <div
+              className="flex justify-center w-1/3 "
+              onClick={() => setQuantity(quantity + 1)}
+            >
+              +
+            </div>
           </div>
 
-          <div className="border flex justify-center items-center mt-4 h-10 border-black rounded-md font-bold text-white bg-black">
+          <div
+            className="border flex justify-center items-center mt-4 h-10 border-black rounded-md font-bold text-white bg-black"
+            onClick={handleAddToCart}
+          >
             ADD TO CART
           </div>
           <div className="border flex justify-center items-center mt-4 h-10 border-black rounded-md font-bold text-white bg-black">
