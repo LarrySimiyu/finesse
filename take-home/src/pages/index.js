@@ -5,6 +5,8 @@ import { AlignJustify, Search } from "react-feather";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const sizes = ["xs", "sm", "md", "lg", "xl", "1x", "2x", "3x"];
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center ${inter.className} bg-white`}
@@ -29,10 +31,25 @@ export default function Home() {
       <div className=" w-full h-[500px] mt-20  lg:mb-0 lg:grid-cols-4 lg:text-left">
         CLOTHING
       </div>
-      <div className="border border-green-500 w-full flex flex-col px-10">
+
+      <div className=" w-full flex flex-col px-10">
         <div className="flex justify-between">
           <div className="font-bold">Sandie Tie Dye Print Dress</div>
-          <div>$500</div>
+          <div className="text-gray-400">$500</div>
+        </div>
+
+        <div className="flex flex-col">
+          <div className="text-[12px]">Size</div>
+          <div className="grid grid-cols-4 grid-rows-2 gap-1">
+            {sizes.map((size) => (
+              <div
+                className="text-[14px] h-8 border border-black flex justify-center items-center rounded-md"
+                key={size}
+              >
+                {size}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </main>
