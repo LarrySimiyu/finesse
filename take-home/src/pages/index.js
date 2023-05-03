@@ -12,6 +12,8 @@ import {
   ArrowRight,
   ChevronUp,
   X,
+  ArrowLeft,
+  Trash2,
 } from "react-feather";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,8 +21,8 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
-
   const [menuVisible, setMenuVisible] = useState(false);
+  const [cartVisible, setCartVisible] = useState(false);
 
   const toggleShipping = () => {
     setIsOpen(!isOpen);
@@ -56,6 +58,7 @@ export default function Home() {
             />
             <Search size={24} />
           </div>
+
           {menuVisible && (
             <div className="bg-white w-[70vw] h-[100vh] absolute top-0 left-0">
               <div className="border-b h-14 pl-5 flex  items-center">
@@ -66,24 +69,71 @@ export default function Home() {
                   }}
                 />
               </div>
-              {menuItems.map((item) => {
-                return (
-                  <div
-                    className="border-b h-14 pl-5 flex  items-center"
-                    key={item}
-                  >
-                    {item}
-                  </div>
-                );
-              })}
-              <div className="flex justify-evenly pl-5 ">
+              <div>
+                {menuItems.map((item) => {
+                  return (
+                    <div
+                      className="border-b h-14 pl-5 flex  items-center"
+                      key={item}
+                    >
+                      {item}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* <div className="flex justify-evenly pl-5 ">
                 <div>Log In</div>
                 <div className="border" />
                 <div>Sign Up</div>
+              </div> */}
+            </div>
+          )}
+          <div
+            className="flex justify-center items-center"
+            onClick={() => setCartVisible(!cartVisible)}
+          >
+            Cart
+          </div>
+          {cartVisible && (
+            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 left-0">
+              <div className="border-b h-16 pl-5 flex  items-center ">
+                <ArrowLeft
+                  size={24}
+                  onClick={() => {
+                    setCartVisible(!cartVisible);
+                  }}
+                />
+
+                <div className="ml-5 text-[18px] font-bold">Shopping Bag</div>
+              </div>
+              {/* shopping item containers */}
+              <div className=" h-[150px] flex justify-between border">
+                <div className="w-[20%] border "> - </div>
+                <div className="border w-[70%] pr-2">
+                  <div className="border flex">
+                    <div>Sandy Tie Dye Print Dress</div>
+                    <div>Size: M</div>
+                  </div>
+                  <div className="border flex justify-between mt-5">
+                    <div>$36.00</div>
+                    <div>QTY: 1</div>
+                  </div>
+                  <div className="border flex justify-between mt-1">
+                    <div className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black">
+                      -
+                    </div>
+                    <div className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black mx-2">
+                      +
+                    </div>
+                    <div className="w-2/5 border flex justify-center items-center h-10 rounded-md border-black">
+                      <Trash2 size={20} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
-          <div className="flex justify-center items-center">Cart</div>
         </div>
       </div>
 
