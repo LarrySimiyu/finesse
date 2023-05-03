@@ -360,17 +360,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div class="w-full h-[500px] bg-gray-200 mt-20 border border-red-500  overflow-x-auto scroll-snap-type-x-mandatory flex justify-center items-center">
-        <div class="scroll-snap-align-start border border-purple-500 flex flex-row justify-center items-center min-w-[500px]">
+      <div class="w-full h-[500px] bg-gray-200 mt-20  overflow-x-auto flex justify-center items-center">
+        <div class="scroll-snap-type-x-mandatory flex flex-row">
           {imageNames.map((name) => {
             return (
               <Image
                 key={name}
                 src={name}
                 alt="Buy with icon"
-                width={300}
+                width={400}
                 height={450}
-                className="ml-2 border rounded-md border-red-500 "
+                className="ml-2 border rounded-md"
               />
             );
           })}
