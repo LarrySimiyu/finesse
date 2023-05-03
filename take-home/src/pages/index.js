@@ -186,7 +186,7 @@ export default function Home() {
             {`Cart${cartItems.length > 0 ? `(${totalQuantity})` : ""}`}
           </div>
           {cartVisible && (
-            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 left-0">
+            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 right-0">
               <div className="border-b h-16 pl-5 flex  items-center ">
                 <ArrowLeft
                   size={24}
@@ -198,8 +198,17 @@ export default function Home() {
                 <div className="ml-5 text-[18px] font-bold">Shopping Bag</div>
               </div>
               <div className="w-full h-20  flex justify-center items-center flex-col  text-[14px] px-5  bg-[#C3B1E1] text-white">
-                <div className="font-bold">Free Shipping!</div>
-                <div>Cart Message Here</div>
+                <div className="font-bold">
+                  {totalCost < 75 ? "Free Shipping!" : "CONGRATS!"}
+                </div>
+                <div className="text-[12px]">
+                  {totalCost < 75
+                    ? `You're $${75 - totalCost} USD away from `
+                    : "Shipping's free! You're welcome bb 😉 "}
+                  {totalCost < 75 && (
+                    <span className="font-bold">FREE SHIPPING!</span>
+                  )}
+                </div>
               </div>
               {/* shopping item containers */}
               {cartItems.map((item) => {
@@ -334,6 +343,13 @@ export default function Home() {
           </div>
           <div className="border flex justify-center items-center mt-4 h-10 border-black rounded-md font-bold text-white bg-black">
             BUY WITH
+            <Image
+              src="/gpay.png"
+              alt="Buy with icon"
+              width={50}
+              height={50}
+              className="ml-2"
+            />
           </div>
         </div>
 
