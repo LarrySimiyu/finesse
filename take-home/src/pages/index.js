@@ -193,35 +193,41 @@ export default function Home() {
           </div>
 
           {menuVisible && (
-            <div className="bg-white w-[70vw] h-[100vh] absolute top-0 left-0">
-              <div className="border-b h-14 pl-5 flex  items-center">
-                <X
-                  size={24}
-                  onClick={() => {
-                    setMenuVisible(!menuVisible);
-                  }}
-                />
-              </div>
-              <div>
-                {menuItems.map((item) => {
-                  return (
-                    <div
-                      className="border-b h-14 pl-5 flex  items-center"
-                      key={item}
-                    >
-                      {item}
-                    </div>
-                  );
-                })}
+            <div className="bg-white w-[70vw] h-[100vh] absolute top-0 left-0 flex justify-between flex-col">
+              <div className="border">
+                <div className="border-b h-14 pl-5 flex  items-center">
+                  <X
+                    size={24}
+                    onClick={() => {
+                      setMenuVisible(!menuVisible);
+                    }}
+                  />
+                </div>
+                <div>
+                  {menuItems.map((item) => {
+                    return (
+                      <div
+                        className="border-b h-14 pl-5 flex  items-center"
+                        key={item}
+                      >
+                        {item}
+                      </div>
+                    );
+                  })}
+                </div>{" "}
               </div>
 
-              {/* <div className="flex justify-evenly pl-5 ">
+              <div className="flex justify-evenly mb-10 ">
                 <div>Log In</div>
                 <div className="border" />
                 <div>Sign Up</div>
-              </div> */}
+              </div>
             </div>
           )}
+          <div className="flex justify-center items-center">
+            <Image src="/logo.png" alt="Buy with icon" width={90} height={80} />
+          </div>
+
           <div
             className="flex justify-center items-center font-semibold"
             onClick={() => setCartVisible(!cartVisible)}
@@ -360,7 +366,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div class="w-full h-[500px] bg-gray-200 mt-20  overflow-x-auto flex justify-center items-center">
+      <div class="w-full h-[500px] bg-gray-200 mt-20  overflow-x-auto flex justify-center items-center ">
         <div class="scroll-snap-type-x-mandatory flex flex-row">
           {imageNames.map((name) => {
             return (
