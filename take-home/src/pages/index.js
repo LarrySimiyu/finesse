@@ -1,20 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import {
-  AlignJustify,
-  Search,
-  PlusCircle,
-  Rewind,
-  MessageCircle,
-  CreditCard,
-  ArrowRight,
-  ChevronUp,
-  X,
-  ArrowLeft,
-  Trash2,
-} from "react-feather";
+import { AlignJustify, Search, ArrowRight, ChevronUp } from "react-feather";
 import { MainMenu } from "@/components/MainMenu";
 import { ShoppingCart } from "@/components/ShoppingCart";
 import { ShippingAndReturns } from "@/components/ShippingAndReturns";
