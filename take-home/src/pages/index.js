@@ -25,17 +25,14 @@ export default function Home() {
   const [cartVisible, setCartVisible] = useState(false);
   const [selectedSize, setSelectedSize] = useState("sm");
   const [cartItems, setCartItems] = useState([]);
+  const [searchVisible, setSearchVisible] = useState(false);
   const [item, setItem] = useState({
     name: "Sadie Tie Dye Print Dress",
     size: "sm",
     cost: 37,
     quantity: 1,
   });
-  // const [item, setItem] = useState({
-  //   size: selectedSize,
-  //   cost: 37,
-  //   quantity: quantity,
-  // });
+
   const [quantity, setQuantity] = useState(1);
 
   const toggleShipping = () => {
