@@ -472,85 +472,71 @@ export default function Home() {
             </svg>
           </div>
           {sizeGuideOpen && (
-            <div className="border-t border-black">
-              <table className="w-full">
-                <thead>
-                  <tr>
-                    <th>Size</th>
-                    <th>US</th>
-                    <th>Bust</th>
-                    <th>Waist</th>
-                    <th>Hip</th>
-                    <th>Inseam</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>XS</td>
-                    <td>0-2</td>
-                    <td>33.5"</td>
-                    <td>25.5"</td>
-                    <td>36.5"</td>
-                    <td>32"</td>
-                  </tr>
-                  <tr>
-                    <td>S</td>
-                    <td>4-6</td>
-                    <td>35"</td>
-                    <td>27"</td>
-                    <td>38"</td>
-                    <td>32"</td>
-                  </tr>
-                  <tr>
-                    <td>M</td>
-                    <td>8-10</td>
-                    <td>37"</td>
-                    <td>29"</td>
-                    <td>40"</td>
-                    <td>32"</td>
-                  </tr>
-                  <tr>
-                    <td>L</td>
-                    <td>12-14</td>
-                    <td>39"</td>
-                    <td>31"</td>
-                    <td>42"</td>
-                    <td>32"</td>
-                  </tr>
-                  <tr>
-                    <td>XL</td>
-                    <td>14-16</td>
-                    <td>41"</td>
-                    <td>33"</td>
-                    <td>44"</td>
-                    <td>32"</td>
-                  </tr>
-                  <tr>
-                    <td>1X</td>
-                    <td>16-18</td>
-                    <td>45"</td>
-                    <td>40"</td>
-                    <td>50"</td>
-                    <td>33.5"</td>
-                  </tr>
-                  <tr>
-                    <td>2X</td>
-                    <td>18-20</td>
-                    <td>47"</td>
-                    <td>42"</td>
-                    <td>52"</td>
-                    <td>33.5"</td>
-                  </tr>
-                  <tr>
-                    <td>3X</td>
-                    <td>20-22</td>
-                    <td>49"</td>
-                    <td>44"</td>
-                    <td>54"</td>
-                    <td>33.5"</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="border-t border-black text-[12px] px-2 py-3">
+              <div className="grid grid-cols-6 gap-2">
+                <div className="font-bold">Size</div>
+                <div className="font-bold">US</div>
+                <div className="font-bold">Bust</div>
+                <div className="font-bold">Waist</div>
+                <div className="font-bold">Hip</div>
+                <div className="font-bold">Inseam</div>
+
+                <div>XS</div>
+                <div>0-2</div>
+                <div>33.5"</div>
+                <div>25.5"</div>
+                <div>36.5"</div>
+                <div>32"</div>
+
+                <div>S</div>
+                <div>4-6</div>
+                <div>35"</div>
+                <div>27"</div>
+                <div>38"</div>
+                <div>32"</div>
+
+                <div>M</div>
+                <div>8-10</div>
+                <div>37"</div>
+                <div>29"</div>
+                <div>40"</div>
+                <div>32"</div>
+
+                <div>L</div>
+                <div>12-14</div>
+                <div>39"</div>
+                <div>31"</div>
+                <div>42"</div>
+                <div>32"</div>
+
+                <div>XL</div>
+                <div>14-16</div>
+                <div>41"</div>
+                <div>33"</div>
+                <div>44"</div>
+                <div>32"</div>
+
+                <div>1X</div>
+                <div>16-18</div>
+                <div>45"</div>
+                <div>40"</div>
+                <div>50"</div>
+                <div>33.5"</div>
+
+                <div>2X</div>
+                <div>18-20</div>
+                <div>47"</div>
+                <div>42"</div>
+                <div>52"</div>
+                <div>33.5"</div>
+
+                <div>3X</div>
+                <div>20-22</div>
+                <div>49"</div>
+                <div>44"</div>
+                <div>54"</div>
+                <div>33.5"</div>
+              </div>
             </div>
           )}
         </div>
