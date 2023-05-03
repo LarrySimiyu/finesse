@@ -190,7 +190,7 @@ export default function Home() {
           </div>
 
           {menuVisible && (
-            <div className="bg-white w-[70vw] h-[100vh] absolute top-0 left-0 flex justify-between flex-col">
+            <div className="bg-white w-[70vw] h-[100vh] absolute top-0 left-0 flex justify-between flex-col border-r border-black">
               <div className="border">
                 <div className="border-b h-14 pl-5 flex  items-center">
                   <X
@@ -232,7 +232,7 @@ export default function Home() {
             {`Cart${cartItems.length > 0 ? `(${totalQuantity})` : ""}`}
           </div>
           {cartVisible && (
-            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 right-0 overflow-auto">
+            <div className="bg-white w-[90vw] h-[100vh] absolute top-0 right-0 overflow-auto border-l border-black">
               <div className="border-b h-16 pl-5 flex  items-center ">
                 <ArrowLeft
                   size={24}
