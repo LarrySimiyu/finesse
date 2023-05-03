@@ -118,6 +118,29 @@ export default function Home() {
     },
   ];
 
+  const likeSuggestions = [
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 34,
+      limited: true,
+    },
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 89,
+    },
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 66,
+      limited: true,
+    },
+    {
+      name: "Sadie Tie Dye Print Dress",
+      cost: 78,
+    },
+  ];
+
+  const imageNames = ["/front.png", "/side.png", "/back.png", "/model.png"];
+
   const increaseQuantity = (itemName, itemSize) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.name === itemName && item.size === itemSize) {
@@ -310,7 +333,7 @@ export default function Home() {
                 </a>
               </div>
               {/* horizantal scroll */}
-              <div className="flex overflow-x-auto w-full  h-[400px]  mb-5 pt-8">
+              <div className="flex overflow-x-auto w-full  h-[350px] scrollbar-track-black scrollbar-thumb-black mb-5 pt-8">
                 {clothingSuggestions.map((item) => {
                   return (
                     <div key={item.cost} className=" min-w-[160px]">
@@ -337,8 +360,21 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" w-full h-[500px] bg-gray-300 mt-20  lg:mb-0 lg:grid-cols-4 lg:text-left pt-0">
-        CLOTHING
+      <div class="w-full h-[500px] bg-gray-200 mt-20 border border-red-500  overflow-x-auto scroll-snap-type-x-mandatory flex justify-center items-center">
+        <div class="scroll-snap-align-start border border-purple-500 flex flex-row justify-center items-center min-w-[500px]">
+          {imageNames.map((name) => {
+            return (
+              <Image
+                key={name}
+                src={name}
+                alt="Buy with icon"
+                width={300}
+                height={450}
+                className="ml-2 border rounded-md border-red-500 "
+              />
+            );
+          })}
+        </div>
       </div>
 
       <div className=" w-full flex flex-col px-5 py-10">
@@ -401,7 +437,6 @@ export default function Home() {
             />
           </div>
         </div>
-
         <div className="flex flex-col mt-10">
           <div className="font-bold">Product Details</div>
           <div className="text-[14px] mb-2">
@@ -418,7 +453,6 @@ export default function Home() {
           <div className="font-bold">Material</div>
           <div className="text-[14px] mb-2">95% Polyester 5% Spandex</div>
         </div>
-
         <div className="border mb-3  border-black rounded-md overflow-hidden">
           <div
             className="px-4 py-3 flex justify-between items-center cursor-pointer h-8"
@@ -501,7 +535,6 @@ export default function Home() {
             </div>
           )}
         </div>
-
         <div className="border  border-black rounded-md overflow-hidden">
           <div
             className="px-4 py-3 flex justify-between items-center cursor-pointer h-8"
@@ -589,26 +622,35 @@ export default function Home() {
             </div>
           )}
         </div>
-
-        <div className="bg-[#C3B1E1] h-[200px] rounded-md my-10">
-          {/* <div className="flex items-center justify-center border">
-            <PlusCircle size={40} color="gray" />
-            <p className="ml-2 text-[12px] font-bold text-gray-500">
-              SIZE INCLUSIVE UP TO 3X
-            </p>
+        <div className="bg-[#C3B1E1] h-[175px] rounded-md my-10 text-white px-5 flex flex-col items-center justify-center">
+          <div className="flex justify-between">
+            <div className="flex items-center justify-center w-[450%] ">
+              <PlusCircle size={45} color="white" />
+              <p className="ml-2 text-[10px] font-semibold  ">
+                SIZE INCLUSIVE UP TO 3X
+              </p>
+            </div>
+            <div className="flex items-center justify-center w-[450%] ">
+              <Rewind size={45} color="white" />
+              <p className="ml-2 text-[10px] font-semibold  ">
+                EASY RETUNRS & EXCHANGES
+              </p>
+            </div>
           </div>
-          <div className="flex items-center justify-start">
-            <Rewind size={40} color="gray" />
-            <p>EASY RETUNRS & EXCHANGES</p>
+          <div className="flex justify-between mt-5">
+            <div className="flex items-center justify-center w-[450%] ">
+              <MessageCircle size={45} color="white" />
+              <p className="ml-2 text-[10px] font-semibold  ">
+                24/7 CUSTOMER SERVICE{" "}
+              </p>
+            </div>
+            <div className="flex items-center justify-center w-[450%] ">
+              <CreditCard size={45} color="white" />
+              <p className="ml-2 text-[10px] font-semibold  ">
+                FLEXIBLE PAYMENT OPTIONS{" "}
+              </p>
+            </div>
           </div>
-          <div className="flex items-center justify-start">
-            <MessageCircle size={40} color="gray" />
-            <p>24/7 CUSTOMER SERVICE</p>
-          </div>
-          <div className="flex items-center justify-start">
-            <CreditCard size={40} color="gray" />
-            <p>FLEXIBLE PAYMENT OPTIONS</p>
-          </div> */}
         </div>
         <div className="flex items-center justify-between">
           <h1 className="font-bold text-[22px]">You May Like...</h1>
@@ -617,7 +659,33 @@ export default function Home() {
           </a>
         </div>
         {/* horizantal scroll */}
-        <div className="w-full h-[300px] border mt-5"></div>
+        <div className="flex overflow-x-auto w-full  h-[350px] scrollbar-track-black scrollbar-thumb-black mb-5 pt-8">
+          {likeSuggestions.map((item) => {
+            return (
+              <div key={item.cost} className=" min-w-[160px]">
+                {" "}
+                <Image
+                  src="/front.png"
+                  alt="Buy with icon"
+                  width={150}
+                  height={150}
+                  className="ml-2 border rounded-md"
+                />{" "}
+                <div className=" flex justify-between items-center mt-2 pl-2 ">
+                  ${item.cost}
+                  {item.limited && (
+                    <div className="text-[12px]  bg-yellow-300 rounded-sm px-1 font-semibold">
+                      Limited Stock
+                    </div>
+                  )}
+                </div>
+                <div className=" flex justify-end mt-2  pl-2 font-semibold">
+                  {item.name}
+                </div>
+              </div>
+            );
+          })}
+        </div>{" "}
         <div
           className="w-full h-[75px] border-t border-b flex justify-center items-center mt-5 font-semibold text-[14px]"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
