@@ -143,7 +143,7 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center ${inter.className} bg-white`}
     >
       <div className="z-10 w-full  max-w-5xl items-center justify-between font-mono text-sm lg:flex ">
-        <div className="fixed left-0 top-0 h-16 px-5 flex w-full justify-between border-b border-gray-300 bg-white  from-zinc-200  backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+        <div className="fixed left-0 top-0 h-16 px-5 flex w-full justify-between  bg-white  from-zinc-200  backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           <div className="flex justify-between items-center w-[20%]">
             <AlignJustify
               size={24}

@@ -1,38 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Design Improvements / Changes
 
-## Getting Started
+1. I chose a different font plus font size. I felt that in some cases the font size on the live product page is a bit too small. I think larger sizing through out site on the movile version should pop.
 
-First, run the development server:
+2. Reduced the amount of white space on the page in some areas. I think this was being caused by the font sizing.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+3. Made the benefits section a pastel purple. I think that would draw the user eyes a bit better to the benefits Finesse offers rather than a gray backdrop.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Item view in the you may like section. I changed how the price and name of the item is ordered. I noticed that on the live page, the prices get pushed down based on the length of the name so they end up not being aligned. I think thats fine in other cases but not the price.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+5. Moved limited stock icon off the image. Personal preference I think it looks cleaner that way. Plus doesnt obstruct the clothing in any way.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+6. Cart free shipping message changed background to pastel purple and removed the loading bar. I think this draws the user towards something exciting unlike the gray. And also felt as if the blue progress bar was not necessary considering the data is updated in the text anyways.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+7. The cart itself has some font size changes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+8. No styled horizantal scroll bars. This was a matter of preference. I think the gray fits in just as well with the theme of the site so far.
 
-## Learn More
+## PERFORMANCE ISSUES
 
-To learn more about Next.js, take a look at the following resources:
+## Product Image Quality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+When a user zoomes into an image or just simply gets an expanded view. Product images are a bit too pixalated. Though they may be 3d images. I personally would find a way to compress the original image and still maintain the quality. On top of that sometimes choosing a different file type for the image can return smaller file sizes and maintain quality.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Cart Item
 
-## Deploy on Vercel
+When there is more than one cart item. At the very top left of the item there is a black mark/dot that appears on mobile. This is probbaly some small peace of code that accidentally made it to production.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Cart Item
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## PRODUCT PAGE LOADING
+
+My eyes sometimes detect the page loading before the image is ready. Not sure how many images are being loading on the first render.
+I would implement some lazy loaidng for the products on the bottom of the page. Since they are not in view on mobile until the user scrolls. I think this would be beneficial.
+
+Also if this is implemented suggestions can be catered to the user specifically ( if not already )
+
+## ADDITIONAL ANSWERS
+
+My one take away while looking at the main site. There needs to be more touches of color. Escpecially for the audience being targeted. I think finesse can still maintain its minimal style but dont think overdoing the black and gray aesthetic is a great idea espcially for such a create site. Finesse is promoting imagination and collaboration. I think think black and gray should be the dominant color theme.
+
+If my plane crashes and I land on an island. First thing Im doing is looking through reckage for some chapstick. I dont want to fight to survive for my life with some cracked lips on a windy island. Next thing Im doing is building shelter, anything to shield me from the sun and slow dehydration. I get migraines sometimes so this is crucial.
+
+My time and doing something meaninful with it. Meaninful does not necessarily mean make loads of money and consider that success. But making sure my time is going towards helping people I love, contributing in any way to help others espcially with mental health. And using that time to challenge myself. I think viewing my life and time on this earth in that way has brought me alot of peace. And knowing no matter what, even if it is difficult. Never spending my life doing something I dont enjoy. I cant get that time back.
