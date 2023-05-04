@@ -12,7 +12,7 @@ export const MainMenu = ({ menuVisible, setMenuVisible }) => {
   ];
   return (
     <div className="bg-white w-[70vw] h-[100vh] absolute top-0 left-0 flex justify-between flex-col border-r border-black">
-      <div className="border">
+      <div>
         <div className="border-b h-14 pl-5 flex  items-center">
           <X
             size={24}

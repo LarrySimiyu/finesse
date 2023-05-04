@@ -1,3 +1,7 @@
+## VIDEO OVERVIEW
+
+https://www.loom.com/share/e7bf1b6b77894d3f95df35e8f7a0eb23
+
 ## Design Improvements / Changes
 
 1. I chose a different font plus font size. I felt that in some cases the font size on the live product page is a bit too small. I think larger sizing through out site on the movile version should pop.
